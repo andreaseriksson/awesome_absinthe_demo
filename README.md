@@ -1,5 +1,12 @@
 # AwesomeAbsintheDemo
 
+Steps to reproduce
+
+```
+mix phx.gen.context Authentication User users name:string email:string password_hash:string
+```
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
