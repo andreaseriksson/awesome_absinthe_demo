@@ -1,5 +1,6 @@
 defmodule AwesomeAbsintheDemo.AuthenticationTest do
   use AwesomeAbsintheDemo.DataCase
+  import AwesomeAbsintheDemo.Fixtures
 
   alias AwesomeAbsintheDemo.Authentication
 
@@ -20,17 +21,8 @@ defmodule AwesomeAbsintheDemo.AuthenticationTest do
     }
     @invalid_attrs %{email: nil, name: nil, password: nil}
 
-    def user_fixture(attrs \\ %{}) do
-      {:ok, user} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Authentication.create_user()
-
-      user
-    end
-
     test "authenticate_user/2 with correct password returns authenticated user" do
-      user = user_fixture()
+      user = user_fixture(@valid_attrs)
 
       assert {:ok, %User{id: id}} =
                Authentication.authenticate_user("some_email@example.com", "some password")
@@ -39,7 +31,7 @@ defmodule AwesomeAbsintheDemo.AuthenticationTest do
     end
 
     test "authenticate_user/2 with incorrect password returns error" do
-      user_fixture()
+      user_fixture(@valid_attrs)
 
       assert {:error, "" <> _} =
                Authentication.authenticate_user("some_email@example.com", "wrong_pass")

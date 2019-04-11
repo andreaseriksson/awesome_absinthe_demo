@@ -41,7 +41,7 @@ defmodule AwesomeAbsintheDemo.Authentication do
 
   """
   def list_users do
-    Repo.all(User)
+    Repo.all(User, preload: [things: :features])
   end
 
   @doc """

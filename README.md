@@ -6,6 +6,13 @@ Steps to reproduce
 mix phx.gen.context Authentication User users name:string email:string password_hash:string
 ```
 
+Generate things and features:
+
+```
+mix phx.gen.context Things Thing things name:string user_id:references:users
+mix phx.gen.context Things Feature features name:string thing_id:references:things
+```
+
 
 To start your Phoenix server:
 

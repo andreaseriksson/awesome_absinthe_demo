@@ -8,6 +8,7 @@ defmodule AwesomeAbsintheDemo.Authentication.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
     field :password_hash, :string
+    has_many :things, AwesomeAbsintheDemo.Things.Thing
 
     timestamps()
   end
