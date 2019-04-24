@@ -25,6 +25,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :awesome_absinthe_demo, AwesomeAbsintheDemo.Guardian,
+  issuer: "AwesomeAbsintheDemo",
+  secret_key: "x5DtmmMGjqmRX0Uw3n4K+UGIALWaw5a/8gYQop2yyUwByg6lGDhagLMVpPW4dN1F",
+  ttl: {30, :days}
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

@@ -11,6 +11,14 @@ defmodule AwesomeAbsintheDemoWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug AwesomeAbsintheDemoWeb.Context
+  end
+
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: AwesomeAbsintheDemoWeb.Schema
+    forward "/", Absinthe.Plug, schema: AwesomeAbsintheDemoWeb.Schema
   end
 
   scope "/", AwesomeAbsintheDemoWeb do
@@ -18,9 +26,4 @@ defmodule AwesomeAbsintheDemoWeb.Router do
 
     get "/", PageController, :index
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", AwesomeAbsintheDemoWeb do
-  #   pipe_through :api
-  # end
 end
